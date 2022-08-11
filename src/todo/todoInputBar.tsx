@@ -22,8 +22,9 @@ const TodoInputBar: FC<IProp> = (props) => {
   };
 
   return (
-    <Box>
+    <div className="todo-input-container">
       <TextField
+        fullWidth={true}
         label="add todo!"
         variant="outlined"
         autoComplete="off"
@@ -33,7 +34,7 @@ const TodoInputBar: FC<IProp> = (props) => {
       <Button variant="contained" onClick={handleSubmitTodo}>
         add todo
       </Button>
-    </Box>
+    </div>
   );
 };
 
