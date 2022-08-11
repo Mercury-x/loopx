@@ -1,8 +1,9 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import TodoInputBar from "./todoInputBar";
 import { Container } from "@mui/system";
 import { Snackbar, Alert, AlertColor, Stack } from "@mui/material";
 import TodoItem, { TodoProp } from "./todoItem";
+import { getStorageData, setStorageData } from "../utils/storage";
 import "./style.css";
 interface Tip {
   msg?: string;
@@ -10,9 +11,18 @@ interface Tip {
   severity: AlertColor;
 }
 
+const initTodoList = (): TodoProp[] => {
+  const todos = getStorageData("todos");
+  try {
+    return JSON.parse(todos);
+  } catch (err) {
+    return [];
+  }
+};
+
 // Todo组件，下方包括输入组件，TodoList组件
 const Todo = () => {
-  const [todos, setTodos] = useState<TodoProp[]>([]);
+  const [todos, setTodos] = useState<TodoProp[]>(initTodoList());
   const [operationTip, setOperationTip] = useState<Tip>({
     isOpen: false,
     severity: "success",
@@ -73,6 +83,11 @@ const Todo = () => {
     }
     setOperationTip({ ...operationTip, isOpen: false });
   };
+
+  // 监听todos更新
+  useEffect(() => {
+    setStorageData("todos", todos);
+  }, [todos]);
 
   return (
     <Container

@@ -1,8 +1,5 @@
-export function getStorageData<T>(key: string): T | undefined {
-  const storageData = localStorage.getItem(key);
-  if (storageData) {
-    return JSON.parse(storageData) as T
-  }
+export function getStorageData(key: string): string {
+  return localStorage.getItem(key) || '';
 } 
 
 export function setStorageData<T>(key: string, data:T): void {
