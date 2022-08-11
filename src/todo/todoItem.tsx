@@ -39,13 +39,14 @@ const TodoItem: FC<IProp> = (props) => {
   };
 
   return (
-    <Box>
+    <div className="todo-item">
       <Checkbox
         checked={done}
         onChange={handleChangeTodoStatus}
         inputProps={{ "aria-label": "controlled" }}
       />
       <Input
+        fullWidth={true}
         value={inputValue}
         onChange={handleInputChange}
         onBlur={handleEditTodo}
@@ -55,7 +56,7 @@ const TodoItem: FC<IProp> = (props) => {
           del
         </Button>
       </ButtonGroup>
-    </Box>
+    </div>
   );
 };
 
