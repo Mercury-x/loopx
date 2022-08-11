@@ -41,7 +41,12 @@ const Todo = () => {
   };
   // todo更新 包括text和done
   const handleUpdateTodo = (todo: TodoProp) => {
-    setTodos(todos.map((item) => (item.id === todo.id ? todo : item)));
+    const updatedTodos = todos.map((item) =>
+      item.id === todo.id ? todo : item
+    );
+    const undoTodos = updatedTodos.filter((item) => !item.done);
+    const doneTodos = updatedTodos.filter((item) => item.done);
+    setTodos([...undoTodos, ...doneTodos]);
     setOperationTip({
       isOpen: true,
       msg: "edit todo success!",
