@@ -3,7 +3,7 @@ import TodoInputBar from "./todoInputBar";
 import { Container } from "@mui/system";
 import { Snackbar, Alert, AlertColor, Stack } from "@mui/material";
 import TodoItem, { TodoProp } from "./todoItem";
-
+import "./style.css";
 interface Tip {
   msg?: string;
   isOpen: boolean;
