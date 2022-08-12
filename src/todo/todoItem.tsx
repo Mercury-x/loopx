@@ -1,6 +1,10 @@
 import React, { FC, useState } from "react";
 import { Input, Box, ButtonGroup, Button, Checkbox } from "@mui/material";
 
+function conflictCode() {}
+
+function conflictCode2(arg: string) {}
+
 export interface TodoProp {
   todo: string;
   id: number;
