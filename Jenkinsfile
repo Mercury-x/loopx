@@ -11,8 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'node -v'
-                sh 'npm -v'
+                sh 'rm -rf node_modules package-lock.json'
                 sh 'node --max-old-space-size=128 npm install' 
             }
         }
